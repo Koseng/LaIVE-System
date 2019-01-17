@@ -11,6 +11,8 @@ Stand heute sollte zur Übertragung von Dateien möglichst nicht mehr das unvers
 
 Empfohlen wird die Verwendung von [WinSCP](https://winscp.net/). WinSCP ist ein mächtiger FTP/SCP/SFTP-Client mit einer umfangreichen Bedienoberfläche und umfangreichen Automatisierungsschnittstellen. 
 
+![Bild WinSCP](https://github.com/Koseng/LaIVE-System/blob/master/pictures/explorer.png)
+
 ## Anleitung zur Verwendung von LaIVE mit COSA WIN und WinSCP
 
 TODO Batchfile 
