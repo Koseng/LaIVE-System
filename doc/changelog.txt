@@ -1,0 +1,561 @@
+LaIVE - Changelog/Versionsinformationen
+Kilian Wenzel
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.12.3.2014-03-17
+Erweiterung: Auf den Gesamt-TN-Listen können Informationen angezeigt werden (direkt nach der Überschrift).
+		Hierzu ist eine Text-Datei laive_entrylist_notes.txt im Verzeichnis, die gelesen wird.
+Erweiterung: Startlisten alle Wettbewerbe und Runden als eine Datei wird jetzt beim Erstellen der einzelnen Startlisten erzeugt und
+		kann z. B. damit ausgedruckt werden. (keine DBS-Wettbewerbe)
+Korrektur:	Teilnehmerliste nach Wettbewerben (beim Drucken werden einzelne Wettbewerbe zusammengehalten auf einer Seite.)
+		Getestet mit Firefox 27.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+0.12.2.2014-02-11
+Korrektur: Länge des angezeigten Wettbewerbsnamens in der Zeitplanansicht korrigiert
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+0.12.1.2014-01-29
+Erweiterung:	Im DBS-Modus wird in der Teilnehmerliste nach Wettbewerb nun auch die Sortiermöglichkeit nach Startklassen angeboten.
+
+Korrektur:	DBS-Modus: Teilnehmerliste nach Vereinen: Startklasse zum Wettbewerb wurde nicht korrekt angezeigt. Wurde korrigiert.
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+0.12.0.2013-12-06
+Erweiterung:	Pokalwertung (cupscoring.php)
+		Ein Stand nach x von y Wettbewerben wird automatisch vom System erzeugt. Dazu sind die betreffenden PokalGrxx.c01-Dateien bei Aktualisierung aus dem
+		COSAWIN-Verzeichnis derzeit noch mit der Hand zu kopieren, da keine automatische Kopie erfolgt.
+		Links zu den Wertungen werden über dem Zeitplan angezeigt.
+		Zudem ist es möglich, Wertungen kombiniert auszugeben.
+		Bsp.:	Als einzelne Pokalwertungen sind vorhanden: (01) Männer, (02) Frauen.
+			Dies Punkte beider Wertungen sollen zusammenaddiert werden und in der Wertung Gesamt ausgegeben werden.
+		In der Zip-Datei mit den LaIVE-Dateien liegt eine Datei: "beispiel_laive_combinedcupscoring.txt", soll die kombinierte Wertung genutzt werden, muss
+		diese in "laive_combinedcupscoring.txt" umbenannt werden (ohne beispiel_).
+
+		Zum Aufbau der Datei:
+		Es handelt sich um eine trennzeichenseperierte Datei. Trennzeichen: ;
+		Folgende Felder sind vorhanden
+		1) Nummer der kombinierten Wertung (frei wählbar; bei einstellig, muss eine 0 vor die Ziffer)
+		2) Name der kombinierten Wertung
+		3) Nummern, der Wertungen, die zusammengeführt werden sollen, getrennt durch Komma (Zahlen im Format wie bei 1))
+
+		Beispielinhalt der Datei für das obige Beispiel:
+		01;Gesamt;01,02;
+		
+		Ist diese Datei auf dem Server mit den Angaben, wird automatisch die kombinierte Pokalwertung berechnet und auch angezeigt (Link ebenfalls über Zeitplan)
+
+		Zudem ist es möglich, für kombinierte Pokalwertungen die Ergebnisse als trennzeichenseperierte Datei auszugeben, damit diese z. B. in ein Word-Dokument
+		(Serienbrieffunktion) zum Urkundendruck eingebunden werden können. Dazu ist die Seite mit folgender ergänzender Angabe in der URL auszurufen: cccsv=1
+		(Der Link hierzu erscheint unten.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+0.11.2.2013-12-03
+Spezielle Erweiterung: Möglichkeit für Alphanumerische Großanzeigetafel (LA-Halle Brandberge) Zeitplan auszugeben. Verschiedene Einstellungsmöglichkeiten vorhanden
+			in Index.php. Funktioniert nur, wenn Ausgabe aktiviert ist und die Zeitplanseite des jeweiligen Tages mit &ttboard=1 aufgerufen wird.
+			Zeitplan steht danach als Download (Rechtsklick; Speichern unter) am Ende des Zeitplans als Link zur Verfügung.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.11.1.2013-11-25
+Erweiterung Teilnehmerliste nach Vereinen bei DBS-Wettbewerben:
+- Startklasse wird unter JG ausgegeben.
+- Zum jeden Wettbewerb wird die Startklasse, in der der Sportler am Wettbewerb teilnimmt ausgegeben
+- Anpassung Drucklayout. Nach jedem Verein wird die Seite umgebrochen und der neue Verein wird auf die nächste Seite gedruckt. Kopf wird auf jede Seite gedruckt.
+  (getestest und funktionsfähig mit Firefox 25.0.1 unter Windows 7); gilt auch für Nicht-DBS-Veranstaltungen
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.11.0.2013-11-25
+Erweiterung:
+Flaggen anstelle von Nationenabkürzungen verwenden ist möglich. Muss in der index.php eingestellt werden
+
+Änderung: Zeitplanlayout wurde geändert.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.10.1.2013-07-03
+Korrektur:
+In der index.php wurde eingestellt, dass der Server es unterstützt, mit fopen auch http-Angaben zu verwenden.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.10.0.2013-07-01
+Erweiterung:
+Teilnehmerlisten erstellen (create_entrylists.php): Aus den COSA-Dateien werden diese nun selbstständig erstellt. Ein Export aus COSAWIN ist nicht mehr notwendig.
+	- Dies betrifft alle Wettbewerbe inklusive DBS-Einsatz.
+	- Stellplatzkarten-Angabe: Es ist möglich, in den Teilnehmerlisten die Stellplatzkarten-Abgabe zu verfolgen. Sportler, die die Karte abgegeben haben,
+		werden angezeigt, ebenso diese, die ihre Karte nicht abgegebn werden. Dies wird in der Teiln.-Liste durch Haken oder Kreuz signalisiert.
+		- Das System ist deaktiviert standardmäßig. Es kann durch Eingabe von #spk1 im Bemerkungsfeld des VA-Berichts aktiviert werden aus COSAWIN.
+		- Hinweis: COSAWIN enthält derzeit noch kein eigenes Stellplatzsystem. In der Steuerung Wettkampflisten erstellen sind vorher alle Athleten auf
+		  nicht am Start (naS) zu setzen. Wird eine Karte abgegeben, ist dies wieder zu entfernen.
+	- Wertungsgruppen werden in den Teilnehmerlisten ausgegeben.	
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.9.6.2013-06-30
+Korrektur: Startlisten erstellen: Bei Staffeln wurde die Meldeleistung nicht korrekt angezeigt. Behoben.
+
+Erweiterung:
+Eine Kopf- und Fußgrafik kann hinzugefügt werden. Dazu ist im Ordner eine Datei header.jpg (für Kopf) und footer.jpg (für Fuß) zu hinterlegen. Die Dateien können auch
+auf einen Link verweisen. Ist in der Index.php einzustellen.
+
+Gesamtteilnehmerliste - Teilnehmerliste nach Vereinen: Anzeige der Athleten-Nummer (= Startrechts-Nummer) ist möglich.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.9.5.2013-06-27
+Änderung:
+Startlisten erstellen + Zeitplan bei Mehrkampfwettbewerben: Die Disziplinen erhalten die Wettbewerbs-Kennzeichnung "md" und der reine MK-Wettb. "m".
+
+Erweiterung:
+Es kann eine ZIP-Datei des Veranstaltungsverzeichnisses abgerufen werden mit allen Daten, die auf dem Server liegen. 
+Die Steuerung wird aufgerufen über index.php?save=1 (nur Daten-Dateien) oder index.php?save=2 (alle Dateien im Verzeichnis). Diese Links zum Aufrufen sind auf an-
+klickbar, wenn die Seite index.php?check=1 mit den Informationen über den Server aufgerufen wird. (ganz unten.)
+
+Die Datei archive.php wurde neu hinzugefügt.
+
+Die Liste der benötigten Dateien wurde abgepasst.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.9.4.2013-06-26
+
+Erweiterung DBS:
+Teilnehmerliste nach Vereinen: Die SDMS-ID wird angezeigt zum Sportler.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.9.3.2013-06-19
+Korrektur:
+- Übersicht: Anzeige von Teilnehmerlisten war nicht gegeben.
+
+
+0.9.2.2013-06-19
+Erweiterung:
+- Einbau von Überprüfung der PHP-Version auf dem Server. Es ist aufzurufen mit check=1.
+- Einbau einer Fehlerbehandlung und Ausgabe in Datei logfile.log.
+- Einige PHP-Warnungen korrigiert.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.9.1.2013-06-18
+Änderungen:
+Zeitplan:	- Die Spalten Disziplin und Runde werden bei Zwischenergebnissen, Startlisten und Ergebnissen fett angezeigt, ansonsten normal.
+Index:		- Die Links im Submenü werden farbig angezeigt, je nach Typ der Liste.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.9.0.2013-06-18
+Das Laive-System wurde unter der GPL v3 Lizenz lizenziert.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.8.0.2013-06-16
+Erweiterungen:
+Übersicht:	- Link hinzugefügt, damit nur die Ergebnislisten angezeigt werden.
+
+Übersicht/Zeitplan: 	- Linkziele können umgestellt werden, dass sie z. B. in einem neuen Fenster geöffnet werden. Dies kann unter $LinksTargets passieren.
+			  Standardmäßig ist dasselbe Fenster eingestellt.
+			- Bei Nicht html-Dokumenten werden die Links in einer Inlineframe angezeigt mit einem Downloadlink darunter.
+
+Erweiterung für DBS-Wettbewerbe (Deutscher Behindertensportverband) - Einzel- und Staffelwettbewerbe
+- Es ist nur eine Veranstalung mit DBS-Wettbewerben der im regulären COSA-WIN-Betrieb möglich.
+- Die Datei DBSTextskl.ct1 aus dem COSA-WIN-Verzeichnis (nicht Veranstaltungsverzeichnis!) muss in den Austauschordner kopiert werden.
+  Auch sobald Startklassen sich ändern oder ergänzt werden.
+Zeitplan/Übersicht:	- Ergänzung der Startklassen.
+Gesamtteilnehmerlisten:	- Startklassen wurden zu den Teilnehmern hinzugefügt.
+Startlistenerstellen:	- Startklassen werden in Überschrift angezeigt und jeweilige Startklasse zum Athleten hinzugefügt.
+
+Die Startlisten wurden im Format, wie auch die Startlisten für die Mehrkampfwettbewerbe ausgestellt:
+
+	s-t-17-27530-123-q.htm		(Startliste für Wettbew.-Typ Technik (t), Wettbewerb-Nr. 17, COSA-Nr. des Wettbewerbs,
+					 Weitsprung WK U12 - Startklasse 123 - Runden-Typ als Buchstabe.)
+
+Das Format der Ergebnislisten musste auch vom derzeitigen Format abweichend gewählt werden. Es wird folgendes Format verwendet:
+
+	e-75-123-k.htm			(Ergebnisliste - Wettbewerb-Nr. 75 - Startklasse 123 - Runden-Typ als Buchstabe.)
+	
+	Hinweis: COSAWIN gibt die Listen nicht in diesem Format aus, der Anwender muss diese selbst benennen.
+	
+	Die Dateiendung kann gewechselt werden, zum Beispiel in "pdf" (oder "htm"). Dazu ist die Endung unter $IPCResultListFileExtention in der Datei index.php ein-
+	 zustellen.
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.7.0.2013-06-12
+Erweiterungen/Änderungen:
+- Es wurde auf Sprachvariablen im gesamten bis jetzt vorhandenen Quelltext umgestellt.
+- Es wurde die Möglichkeit eingebaut, das System in einer anderen Sprache als Deutsch zu betreiben.
+- Derzeit sind Deutsch (de_DLV) und Englisch (en_IAAF) eingebaut. Jedoch ist immer nur der Betrieb mit einer Sprache möglich.
+- In COSA WIN müssen die Daten auch in der entsprechenden Sprache erfasst sein, z. B. Wettbewerbsnamen und Altersklassen, damit es funktioniert.
+- Dies umfasst die gesamte Darstellung sowie die Ausgabe der Leistungen in Startlisten und Teilnehmerlisten mit dem sprachspezifischen Trennzeichen für min/s oder m/cm.
+- Standradmäßig ist Deutsch eingestellt. Die Einstellung muss in der Index.php geändert werden.
+- Disziplinbezeichnungen sind noch nicht vollstänidig integriert in der Übersetzung
+
+Erweiterungen:
+Index:	- Standard-Disziplinen um einige Rollstuhlwettbewerbe erweitert.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.6.13.2013-06-09
+Änderungen:
+Zeitplan:	- Gemischte Wettbewerbe: Bei unterschiedlichen Bezeichnungen für die Läufe werden diese ausgegeben.
+		- Wird die startlistenerstellung verwendet, werden Wettbewerbe nur als gerade laufend (blaue Unterlegung der Zeit) angezeigt, wenn auch Startlisten 
+		  vorliegen. D. h. nur bei Teilnehmerlisten wird nicht unterlegt.
+
+Korrekturen:
+startlisten erstellen:	- Fehler bei Gemischten Wettbewerben korrigiert. Einige Startlisten wurden z. T. nicht erstellt.
+Zeitplan:		- Nur Lauf-Nr. hier wurde die Startliste noch angezeigt, obwohl eine Ergebnisliste vorlag. Wurde korrigiert.
+
+CSS-Anpassung bei den Startlisten, damit lange Titel bei gemischten Wettbewerben auf einer Zeile angezeigt werden, solange möglich.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.6.12.2013-06-08
+Änderungen:
+Zeitplan:	- Anpassung der Anzeige von Anzahl Vereine, Teilnehmer, Staffelmannschaften.
+		- Bei Teiln. nach Wettb. wird Abkürzung des Wochentages mit ausgegeben bei mehr als ein Veranst.-Tag.
+Index:		- CSS: Bei zeitplanvorhandenaktuell wurde der weiße obere Rahmen der Tabelle durch das Blau, das auch in der Hintergrundfarbe verwendet wird, ersetzt.
+		- Kontakt-E-Mail im Footer hinzugefügt.
+Stellplatzzeitplan:	- Wochentag wird nun angezeit vor dem Datum und wie beim Zeitplan, nur bei Mehrtagesveranst. der Tag in Klammern, sonst nur das Datum.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.6.11.2013-06-06
+Änderung:
+Zeitplan:	- Anzeige des Datums wurde geändert: Bei Eintagesveranstaltungen wird die Datumslinkleiste ausgeblendet und im Datum in der Zeitplanüberschrift wird
+		  der Zusatz (Tag 1) entfernt.
+		- Es wird vor dem Datum der jeweilige Wochentag mit ausgegeben.
+Gesamtteilnehmer- In der Liste Teilnehmer nach Wettbewerbe wurde bei Eintagesveranstaltungen das Datum entfernt.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.6.10.2013-06-05
+Korrektur:
+Zeitplan:	- Bei Gemischten Wettbewerben kam es zu fehlerhafter/doppelter Anzeige von sowohl der Startliste als auch der Ergebnisliste. Dies wurde korrigiert.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+0.6.9.2013-06-04
+Änderungen:
+Index/Startlisten erstellen:	- Die Erstellungsmethode wurde so geändert, dass das Einlesen der startlistenerstellen.php von include_once auf fopen umgestellt,
+				  sofern der Server dies unterstützt. Dadurch kann die Seite auch bei großen Datenmengen/Startlisten schnell gezeigt werden.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.6.8.2013-06-04
+Änderungen:
+Zeitplan:		- Anzeige zum Stellplatz-Zeitplan wurde standardmäßig ausgeschaltet.
+			- Diese Anzeige kann durch Eingabe von #spz1 im Bemerkungsfeld des Veranst.-Berichtes eingeschaltet werden. Analog zu Startnummern unterdrücken.
+Startlisten erstellen:	- Wenn Wettkampflisten in COSA WIN gelöscht werden, werden für diese auch keine Startlisten erstellt oder falls vorhanden, diese wieder gelöscht.
+
+Korrekturen:
+Gesamtteilnehmer:	- Bei Wertungruppen und Staffelwettbewerben werden jetz nur die Staffelwettbewerb angezeigt, in denen Staffeln für die Wertungsgruppe vorhanden
+			  sind.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.6.7.2013-06-01
+Korrekturen:
+Startlisten erstellen: 	- A-/B-Finale wurden nicht korrekt angezeigt. Korrigiert.
+			- Leistungen aus Vor- und Zwischenläufen wurden in den Staffel-Startlisten nicht berücksichtigt. Korrigiert.
+Index:			- Automatische Startlistenerstellung wurde nach hinten, hinter das Laden der Seite verschoben.
+Zeitplan:		- Anzeige von Zwischenergebnissen wurde korrigiert bei Finals Technisch.
+			- Anzeige Finals bei mehreren Runden wurde korrigiert.
+			- Berechung Anzahl Teilnehmer und Läufe bei A-/B-Finale korrigiert.
+
+Änderungen:
+Zeitplan:		- Mehrkampf: Einzeldisziplin beendet wurde in Disziplin beendet geändert.
+			- Layout angepasst bei Meldungen und Typ. (CSS-Anpassung)
+
+Gesamtteilnehmerliste:	- Bezeichnung Finale in Beginn 1. Disz. geändert.
+
+Index:			- Falls aufgerufene Datei nicht vorhanden, wird auf die Zeitplandatei weitergeleitet.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.6.6.2013-05-31
+
+Korrekturen/Änderungen:
+- Dateizugriff wurde von relative auf semi-relative Pfade umgestellt, damit der Zugriff schneller erfolgt.
+- ob_start("ob_gzhandler"); wurde hinzugefügt, damit die Ausgabe komprimiert wird.
+- Startlistenerstellung (Automatik) wurde dahingehend angepasst, dass bei einer neuen WkList.c01-Datei die Erstellung automatisch aufgerufen wird.
+- Startlisten erstellen: Gemischte Wettbewerbe: in der Überschrift werden alle Altersklassen angezeigt. AK-spezifische(s) Gewicht/Höhe wird i.d.R. nicht angezeigt.
+- Zeitplan: Bei WkList.c01-Datei vorhanden und entsprechende WK-Liste vorhanden, aber die HTML-Startliste noch nicht vorhanden war, wurde der Link zur Teilnehmer-
+	    Liste nicht immer angezeigt. Wurde korrigiert.
+- Bei der Anzeige der einzelnen Wettbewerbe/Listen wurden die Startliste Finale nicht als Link angezeigt, wenn die Ergebnisse aufgerufen waren. Wurde korrigiert.
+- Komprimierung des CSS-Codes und des Javascprit-Codes. Das sorttable.js wird jetzt nur in die Seiten eingebunden, die es benötigen
+- Hinzufügen eines headers mit den Schriftformat-Informationen zur Index.php-Datei.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.6.5.2013-05-30
+Korrekturen:
+Übersicht:	- Startlisten Mehrkampfwettbewerbe werden ausgeblendet, da diese nur ohne Klasse und Disziplin angezeigt werden würden.
+Index:		- CSS wurde auf Standard-Konformität und übersichtlichkeit hin überarbeitet.
+
+Änderungen:	- Beim Drucken werden Links größenteils ausgeblendet. Dadurch kann Platz beim Ausdruck gespart werden.
+
+Ergänzungen:
+Zeitplan:	- Mehrkämpfe werden zusätzlich vor der eigentlichen Tabelle angezeigt und dies auch jeden Tag nach dem eigentnlichen Starttag.
+		- Mehrkampf-Einzeldisziplinen werden jezt auch als Live angezeigt.
+
+Startlisten erstellen:	- Startlisten werden jetzt automatisch beim Aufruf der Zeitplandatei erstellt (im Hintergrund) falls neue Daten vorhanden sind.
+			- Dazu wird die Datei laive_startlisten.txt angelegt, in die die Zeit der letzten Erstellung geschrieben wird. So wird die Startlistenerstellung
+			  nur alle x Minuten (eingestellt auf 5 Minuten) durchgeführt.
+			- Ein seperates Aufrufen der startlistenerstellen.php ist nicht mehr notwendig.
+			- Dadruch kann es aber dazu kommen, dass der Seitenaufbau/das Laden der Seite etwas länger dauert.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.6.4.2013-05-28
+Erweiterungen:
+Startlisten erstellen:	- Startlisten für die Mehrkampfdisziplinen werden auch erzeugt. Aufgrund der Komplexität der Mehrkampfdisziplinen musst ein anderes Format
+			  für den Dateinamen gewählt werden.
+			  Beispiel:	s-m-17-27530-2-q.htm		(Startliste für Mehrkampfdisziplin Wettbewerb-Nr. 17, COSA-Nr. der Einzeldisziplin
+									Weitsprung WK U12 - Riege Nr. 2 - Runden-Typ als Buchstabe.)
+Zeitplan:		- Startlisten werden für die Mehrkampfeinzeldisziplinen angezeigt. Dazu muss die WkList.c01-Datei vorhanden sein.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.6.3.2013-05-27
+Änderungen:
+- Modul Gesamtteilnehmer: Umstellen des Dateizugriffs, der nun schneller erfolgt
+- In einigen Modulen Fehlerkorrektur in den Arrays $Klassen und $Disziplinen für die Standard-Klassen und -Disziplinen.
+- Umstellung des Dateizugriffs, sodass es er schneller erfolt.
+- Erweiterung des Arrays $Roemisch bis 20.
+
+Erweiterung:
+- im Modul Gesamtteilnehmer: bei den Mehrkämpfen in den U-Altersklassen werden die Jahrgangs-Altersklassen mit angezeigt.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.6.2.2013-05-27
+Korrekturen:
+- Modul Gesamtteilnehmer: Wertungsgruppen korrekt anzeigen lassen; kleine HTML-Korrekturen bei Wertungsgruppen 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.6.1.2013-05-27
+Erweiterungen:
+- Analog zur Unterdrückung der Ausgabe Startnummern kann in COSA WIN im Bemerkungsfeld des Veranst.-Berichtes ein Zeitplanverzug eigegeben werden. Format hierfür:
+  #v030   (die 030 steht für 30 Minuten. Die führende Null muss vorhanden sein! Immer dreistellig.)
+- Ausgestellte Startnummern werden auch bei der Startlistenerstellung berücksichtigt.
+
+
+Änderungen/Korrekturen:
+Modul Startlistenerstellen: - Sprunghöhen wurden bei Hoch-/Stabhochwettbewerben hinzugefügt
+                            - Sprunghöhen oder Qualifikationsmodus wird nun unter den Startlisten ausgegeben.
+       			    - Fehler behoben, bei Gemischten Wettbewerben der Staffeln. Startlisten mit den AKs werden jetzt korrekt ausgegeben.
+Modul Zeitplan:		    - Doppelte Anzeige von Nur Lauf-Nr. wurde behoben. Dies kam vor, wenn der Rundentyp als Startliste vorhanden war und bei den Vorläufen im
+                              Zeitplan noch eine Zeit eingetragen war.
+
+Modul Startlisten erstellen: - Bezeichnung wurde von "Vorleistung" auf Meldeleistung bzw. Qualifikationsleistung, je nach Zutreffendem geändert.
+			     - Qualifikationsmodus: bei Angabe mit Datum wird dies zusammen mit der Zeit auf der nächsten Zeile ausgegeben.
+
+- Anpassung an HTML-Standardkonformität in mehreren Modulen durchgeführt.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.6.0.2013-05-26
+Erweiterungen:
+Neu: Modul Gesamtteilnehmer (gesamtteilnehmer.php): Es werden aus den COSA-WIN-c01-Dateien automatisch folgende Teilnehmerlisten erzeugt und angezeigt:
+	- Teilnehmerliste nach Wettbewerben
+	- Gesamtteilnehmerliste
+	- Teilnehmerliste nach Vereinen
+	
+	- Berücksigtigt werden auch die Wertungsgruppen bei der Anzeige.
+	- Die Teilnehmerliste nach Wettbewerben kann sortiert werden nach: Startnummern, Namen, Meldeleistung.
+
+	- Die Teilnehmerlisten untereinander sind verlinkt (Vereine und Wettbewerbe)
+
+	- Wenn die Wettbewerbsbezeichnung (muss in COSAWIN eingegeben werden) die Zeichen "#0" (Null) enthält, dann wird der Wettbewerb nicht angezeigt.
+
+	- Anzeige der Startnummern kann ausgestellt werden. Ein Weg erfolgt direkt aus COSA WIN heraus. Wenn im Veranstaltungsbericht im Feld
+ 	  Bemerkungen die Zeichen "#s0" eingegeben werden, dann werden keine Startnummern angezeigt. Zum Beispiel hilfreich, wenn Startnummern noch nicht final vergeben
+       	  wurden. Wenn das Zeichen entfernt wird, werden die St.-Nrn. angezeigt.
+
+Zeitplan: Sofern eingestellt und die Dateien existieren und es ist vor der Veranstaltung, wird ein Link zur Teilnehmerliste nach Vereinen angezeigt.
+	
+Änderungen:
+- Index: Refreshzeit (Aktualisierungszeit) wurde angepasst. Je nachdem, welche "sub"-Datei es ist, erfolgt die automatische Aktualisierung.
+- Die Dateien Stamm.c01 und Verein.c01 werden nun auch umbenannt zum schnelleren Zugriff.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.5.1.2013-05-21
+Korrektur: Übersicht: Aufgrund der Startlisten notwendig, damit Wettbewerbe nicht doppelt angezeigt werden.
+
+Änderung:
+Damit es durch den Upload (Dauer bei größeren Dateien oder schlechter Verbindung) der COSA-Dateien nicht zu Ausfällen kommt, werden die COSA-Dateien
+nun auf dem Server umbenannt, was schneller geht, als der Upload. Ihnen wird ein Vorzeichen angehängt.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.5.0.2013-05-21
+
+Liste der benötigten Dateien wurde im Modul Startlistenerstellen  um Verein.c01  und Stamm.c01 ergänzt.
+
+Erweiterungen:
+Neu: Administrationsmodul Startlisten erstellen (startlistenerstellen.php): 
+     - Aufruf mit: index.php?sub=startlistenerstellen.php.
+     - Alle 5 Minuten wird der Aufruf durch ein Refresh automatisch durchgeführt. Durch manuelles Aufrufen der Seite ist dies auch manuell steuerbar.
+     - Das Modul ist in der Lage aus COSAWIN Startlisten zu erstellen und diese als HTML-Datei auf dem Server anzulegen, so dass sie danach sofort zur Ansicht bereit-
+       stehen und in der Übersicht und im Zeitplan angezeigt werden.
+     - Es werden derzeit berücksichtigt: Startlisten Einzel und Startlisten Staffel.
+     - Qualifikationsmodus wird mit ausgegeben bei Vorrunden.
+     - die Meldeleistungen oder Leistungen aus Vorrunden werden berücksichtigt und mit ausgegeben.
+     - Gemischte Wettbewerbe: auch hier werden die Startlisten erstellt, die entsprechende Altersklassen wird hinter jeden Sportler ausgegeben.
+     - Zudem wird die Startliste bei gemischten Wettbewerben für jede beteiligte Altersklasse erstellt.
+     - Es wird geprüft, ob bereits eine Startliste für die Runde vorliegt. ist dies der Fall, wird erst die MD5-Checksumme der neuen und der alten Datei verglichen, 
+       bevor die neue erstellt wird. So werden nur aktuelle Dateien erstellt und ggf. aktualisiert.
+
+Korrekturen:
+Zeitplan: Falschberechung (sehr hohe Teilnehmerzahlen bei mehreren Läufen) aus den Zahlen der WkList.c01 und Endli.c01 wurden korrigiert.
+Übersicht/Zeitplan: Korrekturen, damit die Startlisten korrekt angezeigt werden.
+
+Änderungen:
+Dateiname von Startlisten. Der Dateiname setzt sich aus folgenden Bestandteilen zusammen: "s" + CoSA-Nummer + Typ der Runde als Buchstabe + ".htm".
+Die Startlisten müssen dieses Format haben, um verarbeitet zu werden.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.4.0.2013-05-17
+Liste der benötigten Dateien wurde im Modul Zeitplan um WkList.c01 ergänzt.
+
+Erweiterungen:
+Zeitplan: - Startlisten werden jetzt mit verarbeitet. Diese müssen das Vorzeichen "s" im Dateinamen haben (analog zu den Teilnehmerlisten mit "t").
+            Startlisten werden angezeigt, wenn diese zur Verfügung stehen und die Datei WkList.c01 aus dem COSA-Veranstaltungsverzeichnis vorhanden
+            ist. Zu den Startlisten werden die Läufe/Teilnehmer angezeigt.
+	  - Bei Mehrkämpfen werden bei den Einzeldisziplinen, sofern sie aus der Endli.c01 ausgelesen wurden, mit "Einzeldisziplin beendet" gekennzeichnet.
+Übersicht: - Startlisten werden angezeigt.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+0.3.3.2013-05-16
+Erweiterungen:
+Index: 	- Das Array mit den Standard-Disziplinen wurde um einige Wettbewerbe (vor allem aus dem Bereich Straße, Mehrkampf, DxMM und JtfO) ergänzt.
+	- Das Standard-Disziplinen-Array wurde in der zweiten Ebene um Typ (l - Lauf, t - Technisch, h - Hoch, s - Staffel, w - Straße/Wald/Cross, d - DxMM, j- JtfO) und
+          Kurz(bezeichnung) der Disziplin ergänzt. 
+
+	- Kleine Änderung im Titel der Homepage. (Leichtathletik-Live-Ergebnisse hinzugefügt)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.3.2.2013-05-15
+Korrekturen:
+Index: 	- Text zur Ladedauer der Seite wurde geänderte/konkretisiert.
+	- Metadaten 	<meta http-equiv="expires" content="300">
+			<meta name="robots" content="all">
+			hinzugefügt
+
+Zeitplan: - Unter Umständen wird durch COSA in der Endli mehr als ein Mal das Ergebnisse eines Wettbewerbs gespeichert. Dies führte zu Problemen beim
+            Ermitteln der korrekten Startzeit aus der Endli. Nun wird die Speicherzeit des Datensatzen in der Endli ausgelesen und immer der aktuellste
+            verwendet.
+          - Die Liveanzeige (Dauer) wurde korrigiert. Bei Mehrkämpfen wird der Wettbewerb nun bis maximal 10 Stunden nach Startzeit als live markiert, auch wenn noch
+            keine Ergebnisliste vorliegt. Bei allen andernen Wettbewerben beträgt diese Zeit maximial 5 Stunden. Danach verschwindet die Live-Markierung.
+
+Stellplatz-Zeitplan: Rechtschreibkorrektur. Bei Zeitplan aktualisiert wurde zwei Mal ":" angegeben.
+
+Erweiterungen:
+Zeitplan: Bei Wettbewerben, die gemischt durchgeführt wurden, wird unter den Teilnehmern und Läufen/Gruppen (Anzahl) nun "(gemischt)" ausgegeben.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.3.1.2013-05-14
+Korrekturen:
+Zeitplan: Ausgabe nach Einlesen der Endli wurde so korrigiert, dass alle Einzeldisziplinen beim Mehrkampf korrekt angezeigt werden.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.3.0.2013-05-14
+Liste der benötigten Dateien wurde im Modul Zeitplan um Endli.c01 ergänzt.
+
+Erweiterungen:
+Zeitplan: Es wird zusätzlich die Datei Endli.c01 aus COSA eingelesen, die die Ergebnisse erhält. Dadurch ergeben sich folgende Erweiterungen:
+- Anzahl von Teilnehmer und Läufen/Gruppen wird angezeigt.
+- Die Starzeit wird entsprechend auf die Startzeit geändert, mit der die Wettkampflisten erstellt wurden.
+- Die Rundentypen wurden anhand der Informatationen aus der Endli.c01 angepasst. So ändert sich z. B. ein "Finale" in "Zeitfinalläufe".
+- Bei Mehrkämpfen werden die einzelnen Disziplinen im Zeitplan grau angezeigt. Die Zwischen- und Endstände sind nachwievor aber nur beim Mehrkampf-
+  Wettbewerb Finale abrufbar.
+- Sofern die Endli.c01 nicht vorhanden ist, entstehen keine Nachteile, die oben beschriebenen Erweiterungen stehen dann nur nicht zur Verfügung.
+- Hinweise zum Umgang mit den Erweiterungen im Zeitplan:
+  - Wenn anstatt von Vorläufen Einladungsläufe/Einlageläufe stattfindenen ist in der Steuerung Zeitplan in COSAWIn in der entsprechenden Altersklasse
+    die Vorlauf-Uhrzeit zu entfernen. Jedoch ist der Vorlauf-Tag (z. B. 1) zu behalten/einzutragen.
+  - Beim Mehrkampf ist beim Erstellen der Wettkampflisten immer die korrekte Startzeit auszuwählen, damit diese angezeigt werden kann.
+    Disziplinen ohne Startzeit werden nicht angezeigt.
+
+Erstelldauer/Ladedauer der Seite in den Fuß aufgenommen.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.2.4.2013-05-11
+Zeitplan: Möglichkeit einen Zeitplanverzug in Minuten einzugeben. Damit verschiebt sich die Anzeige der aktuellen Wettbewerbe im Zeitplan, d.h.
+die Markierung wird entsprechend dem Verzug angezeigt.
+Eine Informationszeile erscheint bei Zeitplanverzug.
+Farbe des aktuellen Wettbewerbs angepasst auf lightblue weg von yellow.
+
+Metadaten zur HTML-Seite hinzugefügt.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.2.3.2013-05-10
+Korrekturen:
+Layout wurde angepasst und übersichtlicher gestaltet.
+Zeitplan: Spalte Wettbewerb wurde in Klasse und Diskziplin geteilt.
+Die Tabellenspalten haben eine feste Breite erhalten
+Spalte für Meldungen wurde extra eingefügt.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.2.2.2013-05-10
+Korrekturen:
+Umstellung der ausgegbenen Texte auf Textbausteine, die in der Index-Datei hinterlegt sind
+Dateien wurden auf Variablen eingestellt, die ebenfalls in der Index-Datei hinterlegt sind
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.2.1.2013-05-09
+Korrekturen:
+Layout wurde einheitlich auf CSS (in index.php) für alle Module angepasst. Layoutdefinition über class.
+Module/Seiten wurden auf HTML-Valitität überprüft und korrigiert, sodass der HTML-Code standardkonform ist.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.2.0.2013-05-09
+Folgende Ergänzungen wurden vorgenommen:
+1) Zeitplan: 	Meldungen wurden hinzugefügt, sofern der Typ des Wettbewerbs (ohne) oder Teilnehmer ist, werden diese angezeigt. Dazu ist die Datei WbTeiln.c01 aus dem
+				COSA-Veranstaltungsverzeichnis auf den Server zu kopieren. Hinweis: Erfolgt dies nicht, arbeitet das System ohne Fehler einfach ohne diese Anzeige.
+		Am Veranstaltungstag wird die aktuelle Zeit unterlegt (gelb) und ein Anker gesetzt, damit der Link auf diesen Seitenbereich weist.
+		Zeitplan wurde angepasst: bei Identischer Start-Zeit wird diese nur ein Mal angezeigt.
+2) Stellplatzzeitplan:	Neue Einführung des Moduls. Der Zeitplan, wann für welchen Wettbewerb Stellplatzkarten abzugeben sind, kann angezeigt werden. Dies erfolgt nur,
+						falls gewünscht und die Datei "stellplatzzeitplan.php" sich auf dem Server befindet. Der Stellplatz-Zeitplan kann auch einfach ausgedruckt
+						werden für einen Aushang während der Veranstaltung der als Arbeitszettel am Stellplatz.
+			- Wettbewerbe, bei denen als StellplatzMin "1" eingetragen ist, werden ignoriert.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+0.1.0.2013-05-07
+Das System nutzt COSAWIN-Veranstaltungsdateien und HTML-Ausgaben aus COSAWIN mittels des Result-Tickers um diese auf dem Server entsprechend aufbereitet zu präsentieren
+Grundsystem mit folgenden Modulen ist vorhanden:
+1) Übersicht:	- Teilnehmerlisten und Ergebnislisten werden angezeigt, sobald diese auf dem Server vorhanden sind. Die aktuellsten sind jeweils oben zu finden.
+				- Tabelle ist nach jeder Spalte durch Klick auf den jweiligen Tabellenkopf sortierbar.
+				- Übersicht wird alle 2 Minuten automatisch aktualisiert.
+2) Zeitplan:	- Zeitplan wird von COSAWIN eingelesen (Datei: Wettbew.c01). Diese muss auf dem Server vorhanden sein; hin kopiert
+                - Zeitplan wird automatisch generiert und zeigt die Wettbewerbe an.
+				- Zeitplanseite wird alle 5 Minuten automatisch aktualisiert.
+3) Allgemein:	- Überschriften und Datum/Veranst.-Tage werden aus COSAWIN übernommen. Dazu muss die Datei vandat.c01 auf den Server kopiert werden.
+				- Folgende Typen/Runden werden derzeit unterstützt (für Detais siehe Zusammenstellungen über die Nummern und Dateiformate: )
+					Typen: 	ohne (es liegen nur Zeitplandaten vor), Teilnehmer, Ergebnisse: Vorläufe, Zeitvorläufe, Zwischenläufe, Finale (letzte Runde, egal was),
+							Zwischenergebnisse (bei Finals), Zwischenergebnisse bei Mehrkämpfen nach jeweiliger Disziplin
+					Runden:	Vorläufe, Zeitvorläufe, Zwischenläufe, Finale, nach x Disziplinen (beim Mehrkampf)
+Über das System: 
+- Es besteht aus in PHP geschriebenen Seiten. Getestet wurde es auf einem Apache-Server mit PHP 5.4.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- Folgende Dateien sind derzeit (Stand 0.9.5.2013-06-27) notwendig, um das System zu betreiben:
+	1.	Pflichtdateien:
+		1.1	index.php				(bettet das System und alle Dateien ein, erzeugt die obere Menüleiste)
+		1.2	uebersicht.php			(Modulseite: Übersicht)
+		1.3	sorttable.js			(Javascript-Datei, die dazu dient, die Tabelle im Modul Übersicht zu sortieren)
+	
+	2.	Erweiterungen:				(sofern die benötigten Dateien nicht vorhanden sind, wird die Erweiterung nicht angezeigt)
+		2.1	zeitplan.php			(Modulseite: Zeitplan)
+		2.2	stellplatzzeitplan.php		(Modulseite: Stellplatz-Zeitplan)
+		2.3	startlistenerstellen.php	(Modulseite: Startlisten erstellen)
+		2.4	gesamtteilnehmer.php		(Modulseite: Gesamtteilnehmer)
+
+	3.	Service/Wartung:
+		3.1	archive.php			(Erstellung des ZIP-Archives)	
+	
+	4. Dateien aus COSAWIN, die benötigt werden:
+		4.1	Pflichtdateien:			(damit das Grundsystem funktioniert)
+			3.1.1	verdat.c01		(Veranstaltung, Ort, Datum, Veranstalter ...)
+		4.2	Zusätzlich benötigt für bestimmte Module:
+			3.2.1	Modul Zeitplan
+					4.2.1.1	Wettbew.c01		(Wettbewerbe, Start-Zeiten)
+					4.2.1.2	WbTeiln.c01		(nur, wenn Meldungen angezeigt werden sollen)
+					4.2.1.3	Endli.c01		(nur, wenn Teilnehmer u. Läufe/Gruppen angezeit werden sollen. Zudem werden auch die Rundentypen und
+ 									 Startzeiten aus dieser Datei angepast. So zeigt sich ein realisischeres Bild der Veranstaltung)
+					4.2.1.4 WkList.c01		(Startlisten)
+			4.2.2	Modul Stellplatzzeitplan
+					4.2.2.1	Wettbew.c01		(Wettbewerbe, Start-Zeiten)
+					4.2.2.2	WbTeiln.c01		(nur, wenn Meldungen angezeigt werden sollen)
+			4.2.3	Modul Startlistenerstellen
+					4.2.3.1 Wettbew.c01		(Wettbewerbe, Start-Zeiten, Wettbew.-Typ, Qualifikationseinstellungen)
+					4.2.3.2	WbTeiln.c01		(Gemischt: AK, Meldeleistungen, Qualif.-Leistungen)
+					4.3.3.3	WkList.c01		(Startlisten)
+					4.3.3.4	Stamm.c01		(Sportler)
+					4.3.3.5	verein.c01		(Vereine)
+			4.2.4	Modul Gesamtteilnehmer
+					4.2.3.1 Wettbew.c01		(Wettbewerbe, Start-Zeiten, Wettbew.-Typ, Qualifikationseinstellungen)
+					4.2.3.2	WbTeiln.c01		(Gemischt: AK, Meldeleistungen, Qualif.-Leistungen)
+					4.3.3.3	WkList.c01		(Startlisten)
+					4.3.3.4	Stamm.c01		(Sportler)
+					4.3.3.5	verein.c01		(Vereine)
+		4.3	Für den DBS-Einsatz:
+			4.3.1	DBSTextskl.ct1				(aus dem COSA-Installationsverzeichnis, in mehreren Modulen)
