@@ -44,7 +44,7 @@ Das 'open sftp...'-Kommando erzeugt man sich in WinSCP und kopiert es in das Bat
 1. Regulär auf den Webserver mit WinSCP per SFTP-Sitzung einloggen.
 2. `Sitzung -> Generiere Sitzungs-URL/code -> Script`
 
-**LoeschenUndNeuEinrichtenLiveDaten.bat**
+[**LoeschenUndNeuEinrichtenLiveDaten.bat**](https://github.com/Koseng/LaIVE-System/blob/master/scripts/LoeschenUndNeuEinrichtenLiveDaten.bat)
 ```Batchfile
 @echo off 
 set winscp="C:\Program Files (x86)\WinSCP\winscp.com"
@@ -78,7 +78,7 @@ In COSA WIN die Einstellungen unter `Extra->Drucker-Steuerungen/spezieller Daten
 ### Datenübertragung während des Wettkampfes
 Hierfür dient das Skript `UebertrageLiveDaten.bat`. Angepasst werden müssen die Verzeichnisse und das 'open sftp...'-Kommando. In der Vorlage ist ein timeout von 30 Sekunden eingestellt. Das heißt so lange das Skript läuft wird alle 30 Sekunden das Ausgabeverzeichnis mit dem Webserver synchronisiert.
 
-**UebertrageLiveDaten.bat**
+[**UebertrageLiveDaten.bat**](https://github.com/Koseng/LaIVE-System/blob/master/scripts/UebertrageLiveDaten.bat)
 ```Batchfile
 @echo off
 set winscp="C:\Program Files (x86)\WinSCP\winscp.com"
