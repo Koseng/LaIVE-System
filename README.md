@@ -16,15 +16,20 @@ Empfohlen wird die Verwendung von [WinSCP](https://winscp.net/). WinSCP ist ein 
 ## Anleitung zur Verwendung von LaIVE mit COSA WIN und WinSCP
 Es wird mit 3 Verzeichnissen und zwei Batchfiles gearbeitet.
 
+**Verzeichnisse**:
 1. Das Vorlageverzeichnis auf dem COSA-Rechner. 
    Hier sind die Sourcedateien aus [src](https://github.com/Koseng/LaIVE-System/tree/master/src) abzulegen.
 2. Das eingestellte Ausgabeverzeichnis in COSA WIN unter `Extra->Drucker-Steuerungen/spezieller Datenauschtauch->Autom. HTML-Ergebnisausgabe für Ergebnis-Live-Ticker-> Ausgabe aktivieren`. 
 3. Das Zielverzeichnis auf dem Webserver.
 
 Hier im Beispiel:
-1. Vorlageverzeichnis: c:\vorlageVerzeichnis
-2. Ausgabeverzeichnis: c:\COSAWIN\transfer
-3. Serververzeichnis:  /websites/html
+- Vorlageverzeichnis: c:\vorlageVerzeichnis
+- Ausgabeverzeichnis: c:\COSAWIN\transfer
+- Serververzeichnis:  /websites/html
+
+**Skripte**:
+1. LoeschenUndNeuEinrichtenLiveDaten.bat
+2. UebertrageLiveDaten.bat
 
 ### Einrichten eines neuen Wettkampfes
 Oder neu Aufsetzen eines laufenden Wettkampfes bei Problemen. Achtung: Es sind dann allerdings alle Ergebnislisten gelöscht und müssen in COSA WIN jeweils über "Leistungen->Erfassen Leistungen" und Speichern wieder erzeugt werden.
@@ -33,7 +38,7 @@ Oder neu Aufsetzen eines laufenden Wettkampfes bei Problemen. Achtung: Es sind d
 Das Einrichten erfolgt über das folgende Skript `LoeschenUndNeuEinrichtenLiveDaten.bat`. Angepasst werden müssen die Verzeichnisse und das 'open sftp...'-Kommando. 
 
 Das 'open sftp...'-Kommando erzeugt man sich in WinSCP und kopiert es in das Batch-File. 
-1. Regulär auf den Websever mit WinSCP per SFTP-Sitzung einloggen.
+1. Regulär auf den Webserver mit WinSCP per SFTP-Sitzung einloggen.
 2. `Sitzung -> Generiere Sitzungs-URL/code -> Script`
 
 **LoeschenUndNeuEinrichtenLiveDaten.bat**
@@ -69,10 +74,6 @@ In COSA WIN die Einstellungen unter `Extra->Drucker-Steuerungen/spezieller Daten
 
 ### Datenübertragung während des Wettkampfes
 Hierfür dient das Skript `UebertrageLiveDaten.bat`. Angepasst werden müssen die Verzeichnisse und das 'open sftp...'-Kommando. In der Vorlage ist ein timeout von 30 Sekunden eingestellt. Das heißt so lange das Skript läuft wird alle 30 Sekunden das Ausgabeverzeichnis mit dem Webserver synchronisiert.
-
-Das 'open sftp...'-Kommando erzeugt man sich in WinSCP und kopiert es in das Batch-File. 
-1. Regulär auf den Websever mit WinSCP per SFTP-Sitzung einloggen.
-2. `Sitzung -> Generiere Sitzungs-URL/code -> Script`
 
 **UebertrageLiveDaten.bat**
 ```Batchfile
