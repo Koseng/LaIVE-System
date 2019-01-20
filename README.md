@@ -1,4 +1,4 @@
-# LaIVE-System
+# LaIVE-System mit WinSCP
 Leichtathletik Live Ergebnisse für Cosa
 
 ## Überblick
