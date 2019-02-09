@@ -4,7 +4,7 @@ Leichtathletik Live Ergebnisse für Cosa
 ## Überblick
 Das LaIVE-System dient zum Aufsetzen eines PHP basierten Webservers zur Darstellung von Live Ergebnissen und Listen bei Leichtathletik Wettkämpfen unter Verwendung von [COSA WIN](http://www.cosa-software.de). Es wurde von Kilian Wenzel entwickelt. Das ursprüngliche System wird auf dieser [Website](http://laive.de/LaIVE-System) zur Verfügung gestellt und steht unter der GPL V3.
 
-Während des Wettkampfes müssen die sich ändernden Datendateien von COSA WIN kontinuierlich in das Verzeichnis der PHP-Dateien auf dem Webserver übertragen werden. Die Datendateien werden auf dem Webserver von den PHP-Skripten ausgewertet und automatisch entsprechende Webseiten erzeugt. Außnahme sind die Ergebnisseiten. Dort erzeugt COSA WIN direkt .htm-Seiten die übertragen werden müssen.
+Während des Wettkampfes müssen die sich ändernden Datendateien (.C01) von COSA WIN kontinuierlich in das Verzeichnis der PHP-Dateien auf dem Webserver übertragen werden. Die Datendateien werden auf dem Webserver von den PHP-Skripten ausgewertet und automatisch entsprechende Webseiten erzeugt. Außnahme sind die Ergebnisseiten. Dort erzeugt COSA WIN direkt .htm-Seiten die übertragen werden müssen. Nach der Verarbeitung werden die Datendateien auf dem Server automatisch umbenannt und bekommen den Prefix laive_.
 
 Empfehlung: 
 Auf jeden Fall die komplette [Anleitung](https://github.com/Koseng/LaIVE-System/blob/master/doc/LaIVE_Kurzinformation_2013-11-22.pdf) lesen. Im Unterschied zum FTP-Watchdog wird hier WinSCP verwendet. Auch der Anfang des [Changelog](https://github.com/Koseng/LaIVE-System/blob/master/doc/changelog.txt) ist interessant.
@@ -34,14 +34,19 @@ Hier im Beispiel:
 1. LoeschenUndNeuEinrichtenLiveDaten.bat
 2. UebertrageLiveDaten.bat
 
+**Verwendung von COSA im Netzwerk mit mehreren Rechnern**
+Es kann ein gemeinsames zentrales Ausgabeverzeichnis im Netzwerk verwendet werden. Dieses muss auf allen Rechnern in COSA eingestellt werden. Es genügt dann auch ein zentraler Rechner auf dem WinSCP installiert ist und auf dem die Skripte ausgeführt werden.
+
 ### Einrichten eines neuen Wettkampfes
 Oder neu Aufsetzen eines laufenden Wettkampfes bei Problemen. Achtung: Es sind dann allerdings alle Ergebnislisten gelöscht und müssen in COSA WIN jeweils über "Leistungen->Erfassen Leistungen" und Speichern wieder erzeugt werden.
+
+Grundsätzlich sollte man sich zunächst manuell über die Bedienoberfläche von WinSCP verbinden und damit überprüfen ob die Zugangsdaten korrekt sind und die Verbindung einwandfrei funktioniert.
 
 #### Skript ausführen
 Das Einrichten erfolgt über das folgende Skript `LoeschenUndNeuEinrichtenLiveDaten.bat`. Angepasst werden müssen die Verzeichnisse und das 'open sftp...'-Kommando. 
 
 Das 'open sftp...'-Kommando erzeugt man sich in WinSCP und kopiert es in das Batch-File. 
-1. Regulär auf den Webserver mit WinSCP per SFTP-Sitzung einloggen.
+1. Regulär auf den Webserver mit WinSCP-Bedienoberfläche per SFTP-Sitzung einloggen.
 2. `Sitzung -> Generiere Sitzungs-URL/code -> Script`
 
 [**LoeschenUndNeuEinrichtenLiveDaten.bat**](https://github.com/Koseng/LaIVE-System/blob/master/scripts/LoeschenUndNeuEinrichtenLiveDaten.bat)
@@ -76,7 +81,7 @@ In COSA WIN die Einstellungen unter `Extra->Drucker-Steuerungen/spezieller Daten
 ![Bild COSAWIN](https://github.com/Koseng/LaIVE-System/blob/master/pictures/cosawintransfer.JPG)
 
 ### Datenübertragung während des Wettkampfes
-Hierfür dient das Skript `UebertrageLiveDaten.bat`. Angepasst werden müssen die Verzeichnisse und das 'open sftp...'-Kommando. In der Vorlage ist ein timeout von 30 Sekunden eingestellt. Das heißt so lange das Skript läuft wird alle 30 Sekunden das Ausgabeverzeichnis mit dem Webserver synchronisiert.
+Hierfür dient das Skript `UebertrageLiveDaten.bat`. Angepasst werden müssen die Verzeichnisse und das 'open sftp...'-Kommando. In der Vorlage ist ein timeout von 60 Sekunden eingestellt. Das heißt so lange das Skript läuft wird alle 60 Sekunden das Ausgabeverzeichnis mit dem Webserver synchronisiert.
 
 [**UebertrageLiveDaten.bat**](https://github.com/Koseng/LaIVE-System/blob/master/scripts/UebertrageLiveDaten.bat)
 ```Batchfile
@@ -90,6 +95,6 @@ set serverVerzeichnis=/websites/html
     "open sftp://myUser:myPassword@myServer.de:22/ -hostkey=""ssh-ed25519 256 xxxxxxxxxxxxxxxxMyKexxxxxxxxxxxxxxxxxxxxxxx"" -rawsettings FSProtocol=2" ^
     "synchronize remote %transferVerzeichnis% %serverVerzeichnis%" ^
     "exit"
-timeout /t 30
+timeout /t 60
 goto loop
 ```
