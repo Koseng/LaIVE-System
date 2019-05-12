@@ -26,6 +26,9 @@ Empfohlen wird die Verwendung von [WinSCP](https://winscp.net/). WinSCP ist ein 
 ![Bild Verzeichnis](https://github.com/Koseng/LaIVE-System/blob/master/pictures/scriptDirectory.JPG)
 
 4. Ein Vorlageverzeichnis auf dem COSA-Rechner anlegen. Hier sind die Sourcedateien aus [src](https://github.com/Koseng/LaIVE-System/tree/master/src) abzulegen. Beispielsweise c:\vorlageVerzeichnis
+
+![Bild Vorlageverzeichnis](https://github.com/Koseng/LaIVE-System/blob/master/pictures/vorlageverzeichnis.JPG)
+
 5. Das Transferverzeichnis anlegen und in COSA WIN einstellen unter `Extra->Drucker-Steuerungen/spezieller Datenauschtauch->Autom. HTML-Ergebnisausgabe für Ergebnis-Live-Ticker-> Ausgabe aktivieren`. Beispielsweise c:\COSAWIN\transfer.
 6. Pfade und Zugangsdaten unter 'param' und '$SessionOptions' in deleteAllFilesOnserver.ps1 und uploadService.ps1 anpassen. **Für die Zugangsdaten regulär auf den Webserver mit WinSCP-Bedienoberfläche per SFTP-Sitzung einloggen und mit 'Sitzung -> Erzeuge Sitzungs-URL/code -> .NET assembly code' abrufen**.
 ![Bild Zugangsdaten](https://github.com/Koseng/LaIVE-System/blob/master/pictures/winscpPowershell.JPG)
