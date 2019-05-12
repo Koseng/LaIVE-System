@@ -1,0 +1,1 @@
+powershell.exe -ExecutionPolicy Unrestricted -File uploadService.ps1 
