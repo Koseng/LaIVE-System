@@ -34,6 +34,7 @@ try
         {   
             # Connect
             Write-Host "------------------------------------------------------------------------------"
+            Write-Host (get-date).ToString('G')
             Write-Host "Check Files"
             $fileCount = ( Get-ChildItem -File -Path $transferPath | Measure-Object ).Count;
             Write-Host "$($fileCount) files to upload"
@@ -82,7 +83,7 @@ try
             }
 
             Write-Host "Waiting."
-            For ($i=$waitTime; $i -gt 0; $i–-) 
+            For ($i=$waitTime; $i -gt 0; $iâ€“-) 
             {  
                 $percent = (100/$waitTime) * ($waitTime - $i)
                 Write-Progress -Activity "Next Upload Check" -Status "Waiting Time" -SecondsRemaining $i -PercentComplete $percent
